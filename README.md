@@ -3,6 +3,7 @@
     <img alt="License" src="https://img.shields.io/badge/License-GNU GPL 3.0-blue?style=for-the-badge">
     <img alt="Stars" src="https://img.shields.io/github/stars/DogeProd/Jello?color=blue&style=for-the-badge">
     <img alt="Forks" src="https://img.shields.io/github/forks/DogeProd/Jello?color=blue&style=for-the-badge">
+    <img alt="Release" src="https://img.shields.io/github/v/release/DogeProd/Jello?color=blue&style=for-the-badge">
 </p>
 
 
