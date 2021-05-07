@@ -2,6 +2,8 @@
     Jello
 ]]--
 
+local ac,ec = pcall(function()
+
 if (game:WaitForChild("CoreGui"):FindFirstChild("JelloScreen")) then
 	game.CoreGui["JelloScreen"]:Destroy();
 end;
@@ -18,11 +20,19 @@ local TweenService = game:GetService("TweenService");
     VARS
 ]]--
 
-local DogeDomain = "https://raw.githubusercontent.com/DogeProd/Jello/main";
+local DogeDomain = "https://dogeprod.github.io/Jello/";
 local jelloModuleHolder;
 local modulesRunning = {};
 local DBs = {
 	["rightShift"] = false,
+};
+local jelloColors = {
+    ["hoverWhite"] = Color3.fromRGB(233,233,231),
+    ["white"] = Color3.fromRGB(250,250,250),
+    ["hoverBlue"] = Color3.fromRGB(28,174,255),
+    ["blue"] = Color3.fromRGB(29, 159, 255),
+    ["textWhite"] = Color3.fromRGB(250,250,250),
+    ["textBlack"] = Color3.fromRGB(42, 42, 42)
 };
 
 local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedModules.json", true));
@@ -276,15 +286,14 @@ PenumbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118);
 --[[
     FUNCTIONS
 ]]--
-
-local isRunning = function(textLabelString)
+function isRunning(textLabelString)
 	if (modulesRunning[textLabelString]) then
 		return true;
 	else
 		return false;
 	end;
 end;
-local createPanel = function(data)
+function createPanel(data)
 	local Template = panelTemplate:Clone();
 		
 	Template.MainFrame.textTitle.Text = data.displayTitle;
@@ -294,7 +303,7 @@ local createPanel = function(data)
 		
 	return Template;
 end;
-local createModule = function(panel, data)
+function createModule(panel, data)
 	local Template = moduleButtonTemplate:Clone();
 	
 	Template.Text = data.displayTitle;
@@ -302,16 +311,7 @@ local createModule = function(panel, data)
 	Template.Parent = panel.MainFrame.modsList;
 	Template.Visible = true;
 	
-	coroutine.wrap(function()
-		local jelloColors = {
-			["hoverWhite"] = Color3.fromRGB(233,233,231),
-			["white"] = Color3.fromRGB(250,250,250),
-			["hoverBlue"] = Color3.fromRGB(28,174,255),
-			["blue"] = Color3.fromRGB(29, 159, 255),
-			["textWhite"] = Color3.fromRGB(250,250,250),
-			["textBlack"] = Color3.fromRGB(42, 42, 42)
-		};
-			
+	coroutine.wrap(function()	
 		Template.MouseButton1Click:Connect(function()
             local moduleForTemplate;
 
@@ -320,8 +320,10 @@ local createModule = function(panel, data)
             elseif (data.moduleType == "gamemodules") then
                 moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/gamemodules/"..jelloModuleHolder.."/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "scripts") then
-                moduleForTemplate = loadfile(data.modulePath);
+                --moduleForTemplate = loadfile(data.modulePath);
             end
+
+            print(DogeDomain.."/modules/"..data.displayTitle..".lua")
 
 			if (isRunning(Template.Name)) then
 				Template.BackgroundColor3 = jelloColors.white;
@@ -360,6 +362,34 @@ local createModule = function(panel, data)
 	return Template;
 end;
 
+coroutine.wrap(function()
+    local tweenInfo = TweenInfo.new(0.15);
+    local backBlur = Instance.new("BlurEffect", game.Lighting);
+    backBlur.Size = 0;
+	
+    UserInputService.InputBegan:Connect(function(input, process)
+	    if process then return end;
+	    if DBs.rightShift then return end;
+	    DBs.rightShift = true;
+	
+	    if (input.UserInputType == Enum.UserInputType.Keyboard) then
+		    if (input.KeyCode == Enum.KeyCode.RightShift) then
+			    if (modsMenu.Visible == true) then
+				    local tween = TweenService:Create(backBlur, tweenInfo, {Size = 0});
+				    tween:Play();
+				    modsMenu.Visible = false;
+			    else
+				    local tween = TweenService:Create(backBlur, tweenInfo, {Size = 8});
+				    tween:Play();
+				    modsMenu.Visible = true;
+			    end;
+		    end;
+	    end;
+	
+	    DBs.rightShift = false;
+    end);
+end)();
+
 local panelGui = createPanel({
     ["displayTitle"] = "Gui"
 });
@@ -397,6 +427,7 @@ if (dSupportedGames["PGK."..game.PlaceId]) then
     end;
 end;
 
+--[[
 if (syn) then
     if (isfolder("DogeProd.Jello") == false) then
         makefolder("DogeProd.Jello");
@@ -408,53 +439,28 @@ if (syn) then
         makefolder("DogeProd.Jello/AutoExe");
     end;
     local Scripts = listfiles("DogeProd.Jello/Scripts");
-    if (Scripts) then
-        panelScripts = createPanel({
-            ["displayTitle"] = "Scripts"
-        });
+    panelScripts = createPanel({
+        ["displayTitle"] = "Scripts"
+    });
 
-        for i,v in pairs(Scripts) do
-            pcall(function()
-                local JelloModule = loadfile(v);
-                local JelloCore = JelloModule:getModuleData();
-                createModule(panelGame, {
-                    ["displayTitle"] = JelloCore.displayTitle,
-                    ["moduleType"] = "scripts",
-                    ["modulePath"] = v
-                });
-            end);
-        end;
+    for i,v in pairs(Scripts) do
+        local JelloModule = loadfile(v);
+        local JelloCore = JelloModule:getModuleData();
+        createModule(panelScripts, {
+            ["displayTitle"] = JelloCore.displayTitle,
+            ["moduleType"] = "scripts",
+            ["modulePath"] = v
+        });
     end;
 end;
-
-
-local tweenInfo = TweenInfo.new(0.15);
-local backBlur = Instance.new("BlurEffect", game.Lighting);
-backBlur.Size = 0;
-	
-UserInputService.InputBegan:Connect(function(input, process)
-	if process then return end;
-	if DBs.rightShift then return end;
-	DBs.rightShift = true;
-	
-	if (input.UserInputType == Enum.UserInputType.Keyboard) then
-		if (input.KeyCode == Enum.KeyCode.RightShift) then
-			if (modsMenu.Visible == true) then
-				local tween = TweenService:Create(backBlur, tweenInfo, {Size = 0});
-				tween:Play();
-				modsMenu.Visible = false;
-			else
-				local tween = TweenService:Create(backBlur, tweenInfo, {Size = 8});
-				tween:Play();
-				modsMenu.Visible = true;
-			end;
-		end;
-	end;
-	
-	DBs.rightShift = false;
-end);
+--]]
 
 pcall(function()
     --syn.protect_gui(JelloScreen);
 end)
 JelloScreen.Parent = game.CoreGui;
+
+end)
+if (ec and not ac) then
+    print(ec)
+end
