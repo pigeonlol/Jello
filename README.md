@@ -9,8 +9,8 @@
 
 <h2 align="center">Injectors Supported</h2>
 <p align="center">
-    <img alt="SynapseX" src="https://img.shields.io/badge/SYNX-Good-blue?style=for-the-badge">
-    <img alt="KRNL" src="https://img.shields.io/badge/KRNL-Good-blue?style=for-the-badge">
+    <img alt="SynapseX" src="https://img.shields.io/badge/SYNX-Fully Supported-blue?style=for-the-badge">
+    <img alt="KRNL" src="https://img.shields.io/badge/KRNL-Partially Supported-blue?style=for-the-badge">
 </p>
 
 
