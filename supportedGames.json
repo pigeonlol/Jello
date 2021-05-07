@@ -46,5 +46,13 @@
             "isBeta": false,
             "moduleId": "RankedAreasBypass"
         }]
+    },
+    "PGK.3527629287": {
+        "jelloModuleHolder": "BigPaintball",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "Gun-Unlocker"
+        }]
     }
 }
