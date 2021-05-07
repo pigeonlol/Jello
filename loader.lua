@@ -1,5 +1,6 @@
-if (game:WaitForChild("CoreGui"):FindFirstChild("JelloScreen")) then
-	game.CoreGui["JelloScreen"]:Destroy();
-end;
+--[[
+    Currently just a loader to load a loader.
+    Why? idk
+]]--
 
-loadstring(game:HttpGet("https://dogeprod.github.io/jello/jelloBackend.lua", true))();
+loadstring(game:HttpGet("https://dogeprod.github.io/Jello/jelloBackend.lua", true))();
