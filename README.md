@@ -17,5 +17,5 @@
 <h2 align="center">Loader</h2>
 
 ```lua
-loadstring(game:HttpGet("https://dogeprod.github.io/Jello/loader.lua", true)()
+loadstring(game:HttpGet("https://dogeprod.github.io/Jello/loader.lua", true))()
 ```
