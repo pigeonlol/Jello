@@ -6,7 +6,7 @@ local JelloModule = {}
 
 function JelloModule:getModuleData()
     return {
-        displayTitle = "Gun-Unlocker",
+        displayTitle = "Gun Unlocker",
     }
 end
 
