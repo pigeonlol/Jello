@@ -48,11 +48,11 @@
         }]
     },
     "PGK.3527629287": {
-        "jelloModuleHolder": "BIGpaintball",
+        "jelloModuleHolder": "BigPaintball",
         "jelloModules": [{
             "moduleEnabled": true,
             "isBeta": false,
-            "moduleId": "big-paintball-unlocker"
+            "moduleId": "Gun-Unlocker"
         }]
     }
 }
