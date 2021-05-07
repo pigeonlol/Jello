@@ -35,7 +35,7 @@ local jelloColors = {
     ["textBlack"] = Color3.fromRGB(42, 42, 42)
 };
 
-local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedModules.json", true));
+local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedodules.json", true));
 local dSupportedGames = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedGames.json", true));
 
 --[[
