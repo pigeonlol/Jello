@@ -1,4 +1,12 @@
 --[[
+    Jello
+]]--
+
+if (game:WaitForChild("CoreGui"):FindFirstChild("JelloScreen")) then
+	game.CoreGui["JelloScreen"]:Destroy();
+end;
+
+--[[
     SERVICES
 ]]--
 
@@ -10,12 +18,13 @@ local TweenService = game:GetService("TweenService");
     VARS
 ]]--
 
-local DogeDomain = "https://dogeprod.github.io/jello";
+local DogeDomain = "https://raw.githubusercontent.com/DogeProd/Jello/main";
 local jelloModuleHolder;
 local modulesRunning = {};
 local DBs = {
 	["rightShift"] = false,
 };
+
 local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedModules.json", true));
 local dSupportedGames = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedGames.json", true));
 
@@ -311,7 +320,7 @@ local createModule = function(panel, data)
             elseif (data.moduleType == "gamemodules") then
                 moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/gamemodules/"..jelloModuleHolder.."/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "scripts") then
-                moduleForTemplate = loadstring(loadfile(data.modulePath))();
+                moduleForTemplate = loadfile(data.modulePath);
             end
 
 			if (isRunning(Template.Name)) then
@@ -350,34 +359,6 @@ local createModule = function(panel, data)
 	
 	return Template;
 end;
-
-coroutine.wrap(function()
-	local tweenInfo = TweenInfo.new(0.15);
-	local backBlur = Instance.new("BlurEffect", game.Lighting);
-	backBlur.Size = 0;
-	
-	UserInputService.InputBegan:Connect(function(input, process)
-		if process then return end;
-		if DBs.rightShift then return end;
-		DBs.rightShift = true;
-	
-		if (input.UserInputType == Enum.UserInputType.Keyboard) then
-			if (input.KeyCode == Enum.KeyCode.RightShift) then
-				if (modsMenu.Visible == true) then
-					local tween = TweenService:Create(backBlur, tweenInfo, {Size = 0});
-					tween:Play();
-					modsMenu.Visible = false;
-				else
-					local tween = TweenService:Create(backBlur, tweenInfo, {Size = 8});
-					tween:Play();
-					modsMenu.Visible = true;
-				end;
-			end;
-		end;
-	
-		DBs.rightShift = false;
-	end);
-end)();
 
 local panelGui = createPanel({
     ["displayTitle"] = "Gui"
@@ -434,7 +415,7 @@ if (syn) then
 
         for i,v in pairs(Scripts) do
             pcall(function()
-                local JelloModule = loadstring(loadfile(v))();
+                local JelloModule = loadfile(v);
                 local JelloCore = JelloModule:getModuleData();
                 createModule(panelGame, {
                     ["displayTitle"] = JelloCore.displayTitle,
@@ -446,7 +427,34 @@ if (syn) then
     end;
 end;
 
+
+local tweenInfo = TweenInfo.new(0.15);
+local backBlur = Instance.new("BlurEffect", game.Lighting);
+backBlur.Size = 0;
+	
+UserInputService.InputBegan:Connect(function(input, process)
+	if process then return end;
+	if DBs.rightShift then return end;
+	DBs.rightShift = true;
+	
+	if (input.UserInputType == Enum.UserInputType.Keyboard) then
+		if (input.KeyCode == Enum.KeyCode.RightShift) then
+			if (modsMenu.Visible == true) then
+				local tween = TweenService:Create(backBlur, tweenInfo, {Size = 0});
+				tween:Play();
+				modsMenu.Visible = false;
+			else
+				local tween = TweenService:Create(backBlur, tweenInfo, {Size = 8});
+				tween:Play();
+				modsMenu.Visible = true;
+			end;
+		end;
+	end;
+	
+	DBs.rightShift = false;
+end);
+
 pcall(function()
-    syn.protect_gui(JelloScreen);
+    --syn.protect_gui(JelloScreen);
 end)
 JelloScreen.Parent = game.CoreGui;
