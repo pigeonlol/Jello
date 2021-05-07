@@ -16,8 +16,8 @@ local modulesRunning = {};
 local DBs = {
 	["rightShift"] = false,
 };
-local dSupportedModules = HttpService:JSONDecode(game:HttpGet(shared.DogeDomain.."/supportedModules.json", true));
-local dSupportedGames = HttpService:JSONDecode(game:HttpGet(shared.DogeDomain.."/supportedGames.json", true));
+local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedModules.json", true));
+local dSupportedGames = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedGames.json", true));
 
 --[[
     UI
