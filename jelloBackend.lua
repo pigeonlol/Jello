@@ -244,7 +244,8 @@ modsList.BackgroundTransparency = 1.000;
 modsList.BorderSizePixel = 0;
 modsList.Position = UDim2.new(0.5, 0, 1, 0);
 modsList.Size = UDim2.new(1, 0, 1, -50);
-modsList.CanvasSize = UDim2.new(0, 0, 0, 0);
+modsList.CanvasSize = UDim2.new(0,0,0,0);
+modsList.AutomaticCanvasSize = Enum.AutomaticSize.Y;
 	
 UIListLayout_2.Parent = modsList;
 UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder;
@@ -434,18 +435,26 @@ if (syn) then
         makefolder("DogeProd.Jello/AutoExe");
     end;
     local Scripts = listfiles("DogeProd.Jello/Scripts");
-    panelScripts = createPanel({
-        ["displayTitle"] = "Scripts"
-    });
+    local ScriptsInt = 0;
 
     for i,v in pairs(Scripts) do
-        local JelloModule = loadstring(readfile(v))();
-        local JelloCore = JelloModule:getModuleData();
-        createModule(panelScripts, {
-            ["displayTitle"] = JelloCore.displayTitle,
-            ["moduleType"] = "scripts",
-            ["modulePath"] = v
+        ScriptsInt = ScriptsInt+1;
+    end;
+
+    if (ScriptsInt >= 1) then
+        panelScripts = createPanel({
+            ["displayTitle"] = "Scripts"
         });
+
+        for i,v in pairs(Scripts) do
+            local JelloModule = loadstring(readfile(v))();
+            local JelloCore = JelloModule:getModuleData();
+            createModule(panelScripts, {
+                ["displayTitle"] = JelloCore.displayTitle,
+                ["moduleType"] = "scripts",
+                ["modulePath"] = v
+            });
+        end;
     end;
 end;
 
