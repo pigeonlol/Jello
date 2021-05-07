@@ -35,7 +35,7 @@ local jelloColors = {
     ["textBlack"] = Color3.fromRGB(42, 42, 42)
 };
 
-local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedodules.json", true));
+local dSupportedModules = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedModules.json", true));
 local dSupportedGames = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/supportedGames.json", true));
 
 --[[
@@ -321,7 +321,7 @@ function createModule(panel, data)
             elseif (data.moduleType == "gamemodules") then
                 moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/gamemodules/"..jelloModuleHolder.."/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "scripts") then
-                --moduleForTemplate = loadfile(data.modulePath);
+                moduleForTemplate = loadstring(readfile(data.modulePath))();
             end
 
 			if (isRunning(Template.Name)) then
@@ -426,7 +426,6 @@ if (dSupportedGames["PGK."..game.PlaceId]) then
     end;
 end;
 
---[[
 if (syn) then
     if (isfolder("DogeProd.Jello") == false) then
         makefolder("DogeProd.Jello");
@@ -443,7 +442,7 @@ if (syn) then
     });
 
     for i,v in pairs(Scripts) do
-        local JelloModule = loadfile(v);
+        local JelloModule = loadstring(readfile(v))();
         local JelloCore = JelloModule:getModuleData();
         createModule(panelScripts, {
             ["displayTitle"] = JelloCore.displayTitle,
@@ -452,7 +451,6 @@ if (syn) then
         });
     end;
 end;
---]]
 
 pcall(function()
     --syn.protect_gui(JelloScreen);
