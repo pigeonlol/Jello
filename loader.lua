@@ -2,4 +2,4 @@ if (game:WaitForChild("CoreGui"):FindFirstChild("JelloScreen")) then
 	game.CoreGui["JelloScreen"]:Destroy();
 end;
 
-loadstring(game:HttpGet("https://DogeProd.github.io/Jello/jelloBackend.lua", true))();
+loadstring(game:HttpGet("https://dogeprod.github.io/jello/jelloBackend.lua", true))();

@@ -268,9 +268,6 @@ PenumbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118);
     FUNCTIONS
 ]]--
 
-local requestUrl = function(config)
-    return game:HttpGet(config.Url, true)
-end;
 local isRunning = function(textLabelString)
 	if (modulesRunning[textLabelString]) then
 		return true;
@@ -310,15 +307,9 @@ local createModule = function(panel, data)
             local moduleForTemplate;
 
             if (data.moduleType == "modules") then
-                moduleForTemplate = loadstring(requestUrl({
-                    Url = DogeDomain.."/modules/"..data.displayTitle..".lua",
-                    Method = "GET"
-                }))();
+                moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/modules/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "gamemodules") then
-                moduleForTemplate = loadstring(requestUrl({
-                    Url = DogeDomain.."/gamemodules/"..jelloModuleHolder.."/"..data.displayTitle..".lua",
-                    Method = "GET"
-                }))();
+                moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/gamemodules/"..jelloModuleHolder.."/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "scripts") then
                 moduleForTemplate = loadstring(loadfile(data.modulePath))();
             end
