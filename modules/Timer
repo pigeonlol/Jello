@@ -14,8 +14,8 @@ game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = (70* 1.5)
 end
 
 function JelloModule:onStop()
-    game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
-    game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 50
+game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 50
 end
 
 return JelloModule;
