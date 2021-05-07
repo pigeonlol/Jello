@@ -8,4 +8,10 @@
     "isBeta": false,
     "moduleId": "Rejoin",
     "moduleType": "Miscellaneous"
+},{
+    "moduleEnabled": true,
+    "isBeta": false,
+    "moduleId": "x2 Timer",
+    "moduleType": "Miscellaneous"
+    "moduleAuthor": "Sparmage"
 }]
