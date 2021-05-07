@@ -2,16 +2,18 @@
     "moduleEnabled": true,
     "isBeta": false,
     "moduleId": "DisableWatermark",
-    "moduleType": "Gui"
+    "moduleType": "Gui",
+    "moduleAuthor": "ShibaInu"
 },{
     "moduleEnabled": true,
     "isBeta": false,
     "moduleId": "Rejoin",
-    "moduleType": "Miscellaneous"
+    "moduleType": "Miscellaneous",
+    "moduleAuthor": "ShibaInu"
 },{
     "moduleEnabled": true,
     "isBeta": false,
     "moduleId": "x2 Timer",
-    "moduleType": "Miscellaneous"
+    "moduleType": "Miscellaneous",
     "moduleAuthor": "Sparmage"
 }]
