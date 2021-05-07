@@ -311,13 +311,12 @@ function createModule(panel, data)
 	
 	coroutine.wrap(function()	
 		Template.MouseButton1Click:Connect(function()
-            print(DogeDomain.."/modules/"..data.displayTitle..".lua")
             local moduleForTemplate;
 
             if (data.moduleType == "modules") then
                 moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/modules/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "gamemodules") then
-                moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/gamemodules/"..jelloModuleHolder.."/"..data.displayTitle..".lua"))();
+                moduleForTemplate = loadstring(game:HttpGet(DogeDomain.."/gameModules/"..jelloModuleHolder.."/"..data.displayTitle..".lua"))();
             elseif (data.moduleType == "scripts") then
                 moduleForTemplate = loadstring(readfile(data.modulePath))();
             end
