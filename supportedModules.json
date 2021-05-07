@@ -13,7 +13,7 @@
 },{
     "moduleEnabled": true,
     "isBeta": false,
-    "moduleId": "x2 Timer",
+    "moduleId": "Timer",
     "moduleType": "Miscellaneous",
     "moduleAuthor": "Sparmage"
 }]
