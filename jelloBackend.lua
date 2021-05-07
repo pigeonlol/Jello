@@ -2,8 +2,6 @@
     Jello
 ]]--
 
-local ac,ec = pcall(function()
-
 if (game:WaitForChild("CoreGui"):FindFirstChild("JelloScreen")) then
 	game.CoreGui["JelloScreen"]:Destroy();
 end;
@@ -452,12 +450,7 @@ if (syn) then
     end;
 end;
 
-pcall(function()
-    --syn.protect_gui(JelloScreen);
-end)
-JelloScreen.Parent = game.CoreGui;
-
-end)
-if (ec and not ac) then
-    print(ec)
+if (syn) then
+    syn.protect_gui(JelloScreen);
 end
+JelloScreen.Parent = game.CoreGui;
