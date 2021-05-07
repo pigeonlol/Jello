@@ -1,0 +1,11 @@
+  [{
+    "moduleEnabled": true,
+    "isBeta": false,
+    "moduleId": "DisableWatermark",
+    "moduleType": "Gui"
+},{
+    "moduleEnabled": true,
+    "isBeta": false,
+    "moduleId": "Rejoin",
+    "moduleType": "Miscellaneous"
+}]

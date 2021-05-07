@@ -1,0 +1,50 @@
+{
+    "PGK.718328620": {
+        "jelloModuleHolder": "Boba",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "RankedAreasBypass"
+        }]
+    },
+    "PGK.23578803": {
+        "jelloModuleHolder": "HotelElephant",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "InfiniteCash"
+        }]
+    },
+    "PGK.961426258": {
+        "jelloModuleHolder": "KoalaAssociation",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "RankedAreasBypass"
+        }]
+    },
+    "PGK.2688548122": {
+        "jelloModuleHolder": "Myo",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "RankedAreasBypass"
+        }]
+    },
+    "PGK.1004691966": {
+        "jelloModuleHolder": "SoleraHotelsResorts",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "RankedAreasBypass"
+        }]
+    },
+    "PGK.5375214462": {
+        "jelloModuleHolder": "StarBloxCafe",
+        "jelloModules": [{
+            "moduleEnabled": true,
+            "isBeta": false,
+            "moduleId": "RankedAreasBypass"
+        }]
+    }
+}
