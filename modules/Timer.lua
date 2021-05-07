@@ -6,7 +6,7 @@ local JelloModule = {}
 
 function JelloModule:getModuleData()
     return {
-        displayTitle = "2x Timer",
+        displayTitle = "Timer",
     }
 end
 
