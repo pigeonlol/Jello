@@ -20,7 +20,7 @@ local TweenService = game:GetService("TweenService");
     VARS
 ]]--
 
-local DogeDomain = "https://dogeprod.github.io/Jello/";
+local DogeDomain = "https://dogeprod.github.io/Jello";
 local jelloModuleHolder;
 local modulesRunning = {};
 local DBs = {
@@ -313,6 +313,7 @@ function createModule(panel, data)
 	
 	coroutine.wrap(function()	
 		Template.MouseButton1Click:Connect(function()
+            print(DogeDomain.."/modules/"..data.displayTitle..".lua")
             local moduleForTemplate;
 
             if (data.moduleType == "modules") then
@@ -322,8 +323,6 @@ function createModule(panel, data)
             elseif (data.moduleType == "scripts") then
                 --moduleForTemplate = loadfile(data.modulePath);
             end
-
-            print(DogeDomain.."/modules/"..data.displayTitle..".lua")
 
 			if (isRunning(Template.Name)) then
 				Template.BackgroundColor3 = jelloColors.white;
