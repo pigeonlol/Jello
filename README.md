@@ -4,7 +4,7 @@
     <img alt="Stars" src="https://img.shields.io/github/stars/DogeProd/Jello?color=blue&style=for-the-badge">
     <img alt="Forks" src="https://img.shields.io/github/forks/DogeProd/Jello?color=blue&style=for-the-badge">
     <img alt="Release" src="https://img.shields.io/github/release/DogeProd/Jello?color=blue&style=for-the-badge">
-    <img alt="Lines of Code" src="https://img.shields.io/tokei/lines/github/DogeProd/Jello?style=for-the-badge">
+    <img alt="Lines" src="https://img.shields.io/tokei/lines/github/DogeProd/Jello?style=for-the-badge">
 </p>
 
 
