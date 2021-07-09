@@ -511,3 +511,13 @@ DisableWater.MouseButton1Click:connect(function()
 	Fly.TextColor3 = textcol
 	Timer.BackgroundColor3 = base
 end)
+
+
+modMenu2.Active = true
+GUI.Active = true
+Gamle.Active = true
+modsMenu.Active = true
+modMenu2.Active = true
+
+local soapyballs = ScreenGui:GetChildren()
+soapyballs.Draggable = true
