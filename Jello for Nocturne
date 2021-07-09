@@ -519,5 +519,7 @@ Gamle.Active = true
 modsMenu.Active = true
 modMenu2.Active = true
 
-local soapyballs = ScreenGui:GetChildren()
-soapyballs.Draggable = true
+modMenu2.Draggable = true
+modsMenu.Draggable = true
+Gamle.Draggable = true
+GUI.Draggable = true
