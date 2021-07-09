@@ -334,7 +334,7 @@ Dex.MouseButton1Click:connect(function()
 	Timer.TextColor3 = textcol
 	Fly.TextColor3 = textcol
 	NoClip.TextColor3 = textcol
-	Dex.TextColor3 = textcol
+	Dex.TextColor3 = bluetext
 	Fly.TextColor3 = textcol
 	Timer.BackgroundColor3 = base
 	Timer.BackgroundColor3 = base
