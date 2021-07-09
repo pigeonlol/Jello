@@ -38,6 +38,7 @@ local dSupportedGames = HttpService:JSONDecode(game:HttpGet(DogeDomain.."/suppor
 
 --[[
     UI
+this is a gui retard
 ]]--
 
 local JelloScreen = Instance.new("ScreenGui");
